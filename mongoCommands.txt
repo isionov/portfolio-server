@@ -1,0 +1,14 @@
+net:
+  port: 27017
+  bindIp: 127.0.0.1
+Если запустить локально, то запустится на порту 27017
+localhost:27017
+
+Команды в запущенном клиенте mongo.exe
+
+show dbs // покажет базы данных
+use nameOfDB // создаст или переключится на базу данных
+db - ссылается на текущую базу данных
+show collections // покажет колекции текущей базы данных
+db.nameOfCollection.insert({"name":"customName"})
+db.nameOfCollection.find() // покажет все элементы коллекции

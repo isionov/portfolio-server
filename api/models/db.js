@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 
 mongoose
   .connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`, {
-    useMongoClient: true
+    useNewUrlParser: true
   })
   .catch((e) => {
     console.error(e);
@@ -25,7 +25,7 @@ mongoose.connection.on("error", function(err) {
 });
 
 mongoose.connection.on("disconnect", function() {
-  console.log("Mongoose default connection desconnected");
+  console.log("Mongoose default connection disconnected");
 });
 
 process.on("SIGINT", function() {
@@ -38,4 +38,9 @@ process.on("SIGINT", function() {
 });
 
 require("./slill-cards");
-require("./works");
+// require("./works");
+
+// const Model = mongoose.model("SkillCards");
+
+// const item = new Model({title:"test one"});
+// item.save();

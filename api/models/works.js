@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose"),
   Schema = mongoose.Schema,
-  WorksScheema = new Scheema({
+  WorksScheema = new Schema({
     title: {
       type: String,
       required: [true, "Укажите название группы навыков"]

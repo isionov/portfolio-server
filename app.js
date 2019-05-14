@@ -7,7 +7,7 @@ const logger = require("morgan");
 require("./api/models/db"); // Подключаем БД
 
 const indexRouter = require("./routes/index");
-
+const indexRouterApi = require('./api/routes/index');
 const app = express();
 
 // view engine setup
@@ -19,8 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
-// app.use("/", indexRouter);
+app.use("/", indexRouter);
+app.use("/api", indexRouterApi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
