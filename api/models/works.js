@@ -5,7 +5,7 @@ const mongoose = require("mongoose"),
   WorksScheema = new Schema({
     title: {
       type: String,
-      required: [true, "Укажите название группы навыков"]
+      required: [true, "Укажите название работы"]
     },
     techs: { type: String, required: [true, "Укажите технологии"] },
     link: { type: String, required: [true, "Укажите ссылку"] },

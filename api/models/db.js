@@ -38,6 +38,9 @@ process.on("SIGINT", function() {
 });
 
 require("./slill-cards");
+require("./skills");
+require("./works");
+
 // require("./works");
 
 // const Model = mongoose.model("SkillCards");
