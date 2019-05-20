@@ -37,7 +37,7 @@ node_modules/
 jspm_packages/
 
 # Config
-config/
+/config/*
 
 # Uploads
 public/upload/
