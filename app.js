@@ -7,7 +7,7 @@ const logger = require("morgan");
 require("./api/models/db"); // Подключаем БД
 
 const indexRouter = require("./routes/index");
-const indexRouterApi = require('./api/routes/index');
+const indexRouterApi = require("./api/routes/index");
 const app = express();
 
 // view engine setup
@@ -18,6 +18,20 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// кросдоменный запрос
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
+require("./config/config-passport.js");
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/api", indexRouterApi);

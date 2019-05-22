@@ -2,16 +2,17 @@ const mongoose = require("mongoose");
 const formidable = require("formidable");
 const fs = require("fs");
 const path = require("path");
-const upload = "public/upload/img/works";
+const upload = "public/upload/img/revs";
 
-module.exports.createWork = (req, res) => {
-  const Works = mongoose.model("Works");
+module.exports.createRev = (req, res) => {
+  const Revs = mongoose.model("Revs");
   const form = new formidable.IncomingForm();
 
   form.uploadDir = path.join(process.cwd(), upload);
   form.parse(req, function(err, fields, file) {
-    const { title, techs, link, description } = fields;
-
+    const { author, occ, text } = fields;
+    console.dir(file);
+    console.dir(req);
     if (err) {
       return res
         .status(400)
@@ -25,16 +26,15 @@ module.exports.createWork = (req, res) => {
       });
     }
 
-    const item = new Works({
-      title,
-      techs,
-      link,
-      description,
+    const item = new Revs({
+      author,
+      occ,
+      text,
       photo: upload,
       user_id: req.user.id
     });
     const fileName = path.join(upload, `/${item.id}.png`);
-    const publicPathPhoto = "/upload/img/works" + `/${item.id}.png`;
+    const publicPathPhoto = "/upload/img/revs" + `/${item.id}.png`;
 
     item.set("photo", publicPathPhoto);
     item
@@ -58,8 +58,8 @@ module.exports.createWork = (req, res) => {
   });
 };
 
-module.exports.changeWork = (req, res) => {
-  const Works = mongoose.model("Works");
+module.exports.changeRev = (req, res) => {
+  const Revs = mongoose.model("Revs");
   const form = new formidable.IncomingForm();
   const id = req.params.id;
 
@@ -89,7 +89,7 @@ module.exports.changeWork = (req, res) => {
       }
     });
 
-    Works.findByIdAndUpdate(id, { $set: { title, techs, link, description } })
+    Revs.findByIdAndUpdate(id, { $set: { title, techs, link, description } })
       .then(item => {
         if (!!item) {
           res.status(200).json({ message: "Запись успешно изменена" });
@@ -105,12 +105,12 @@ module.exports.changeWork = (req, res) => {
   });
 };
 
-module.exports.deleteWork = (req, res) => {
-  const Work = mongoose.model("Works");
+module.exports.deleteRev = (req, res) => {
+  const Revs = mongoose.model("Revs");
   const id = req.params.id;
   const fileName = path.join(upload, `/${item.id}.png`);
 
-  Work.findByIdAndRemove(id)
+  Revs.findByIdAndRemove(id)
     .then(item => {
       if (!!item) {
         fs.unlink(fileName, function(err) {
@@ -133,10 +133,10 @@ module.exports.deleteWork = (req, res) => {
     });
 };
 
-module.exports.getWorks = (req, res) => {
-  const Work = mongoose.model("Works");
+module.exports.getRevs = (req, res) => {
+  const Rev = mongoose.model("Revs");
 
-  Work.find().then(items => {
+  Rev.find().then(items => {
     res.status(200).json(items);
   });
 };
