@@ -65,3 +65,8 @@ typings/
 
 # next.js build output
 .next
+
+
+# Bash
+
+bash.exe.stackdump

@@ -25,7 +25,16 @@ module.exports.getSkills = (req, res) => {
   const Skills = mongoose.model("Skills");
 
   Skills.find().then(items => {
-    res.status(200).json(items);
+    let changedArr = items.map(elem => {
+      return {
+        id: elem["_id"],
+        user_id: elem["user_id"],
+        title: elem["title"],
+        percent: elem["percent"],
+        category: elem["category"]
+      };
+    });
+    res.status(200).json(changedArr);
   });
 };
 
@@ -51,10 +60,12 @@ module.exports.deleteSkill = (req, res) => {
 module.exports.changeSkill = (req, res) => {
   const Skills = mongoose.model("Skills");
   const id = req.params.id;
+  const { title, percent, category } = req.body;
+  console.log(req.body);
   const data = {
-    title: req.body.title,
-    percent: req.body.title,
-    category: req.body.title
+    title,
+    percent,
+    category
   };
   if (percent > 100 || percent < 0) {
     return res.status(400).json({ message: `Неверно указан уровень навыка` });

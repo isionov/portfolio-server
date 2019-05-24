@@ -7,12 +7,16 @@ const ctrlWorks = require("../controllers/ctrlWorks");
 const ctrlReg = require("../controllers/ctrlReg");
 const ctrlAuth = require("../controllers/ctrlAuth");
 const ctrlRevs = require("../controllers/ctrlRevs");
+const ctrlUser = require("../controllers/ctrlUser");
 
 const passport = require("passport");
 const auth = passport.authenticate("jwt", { session: false });
 
-router.post("/register", ctrlReg.reg);
+router.get("/user", auth, ctrlUser.getUser);
+
+// router.post("/register", ctrlReg.reg);
 router.post("/login", ctrlAuth.auth);
+router.post("/logout", ctrlAuth.logout);
 
 router.get("/categories", ctrlSkillCards.getSkillCards);
 router.post("/categories", auth, ctrlSkillCards.createSkillCard);
@@ -29,9 +33,9 @@ router.post("/works", auth, ctrlWorks.createWork);
 router.post("/works/:id", auth, ctrlWorks.changeWork);
 router.delete("/works/:id", auth, ctrlWorks.deleteWork);
 
-router.get("/revs", ctrlRevs.getRevs);
-router.post("/revs", auth, ctrlRevs.createRev);
-router.post("/revs/:id", auth, ctrlRevs.changeRev);
-router.delete("/revs/:id", auth, ctrlRevs.deleteRev);
+router.get("/reviews", ctrlRevs.getRevs);
+router.post("/reviews", auth, ctrlRevs.createRev);
+router.post("/reviews/:id", auth, ctrlRevs.changeRev);
+router.delete("/reviews/:id", auth, ctrlRevs.deleteRev);
 
 module.exports = router;

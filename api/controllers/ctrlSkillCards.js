@@ -7,8 +7,6 @@ module.exports.createSkillCard = (req, res) => {
     user_id: req.user.id
   });
 
-  console.log("before creating catd ctrlSkillCard", req, item);
-
   item
     .save()
     .then(item => {
@@ -25,18 +23,34 @@ module.exports.getSkillCards = (req, res) => {
   const SkillCards = mongoose.model("SkillCards");
 
   SkillCards.find().then(items => {
-    res.status(200).json(items);
+    let changedArr = items.map(elem => {
+      return {
+        id: elem["_id"],
+        user_id: elem["user_id"],
+        category: elem["category"]
+      };
+    });
+    res.status(200).json(changedArr);
   });
 };
 
 module.exports.deleteSkillCard = (req, res) => {
   const SkillCards = mongoose.model("SkillCards");
+  const Skills = mongoose.model("Skills");
   const id = req.params.id;
 
   SkillCards.findByIdAndRemove(id)
     .then(item => {
       if (!!item) {
-        res.status(200).json({ message: "Запись успешно удалена" });
+        Skills.deleteMany({ category: id }).then(item => {
+          if (item) {
+            res.status(200).json({ message: "Запись успешно удалена" });
+          } else {
+            res
+              .status(404)
+              .json({ message: "В базе остались связанные элементы" });
+          }
+        });
       } else {
         res.status(404).json({ message: "Запись не найдена" });
       }
