@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "c0d3d7bf5c07fa8558cc",
-    "url": "/taxi/static/js/main.c0d3d7bf.chunk.js"
+    "revision": "77d26bb10ed5c0b85f66",
+    "url": "/taxi/static/js/main.77d26bb1.chunk.js"
   },
   {
     "revision": "33d8d96745dd738af7bc",
@@ -112,7 +112,7 @@ self.__precacheManifest = [
     "url": "/taxi/static/media/roboto-latin-900italic.bc833e72.woff"
   },
   {
-    "revision": "e41e28a353a285ceeba036ded9b8473d",
+    "revision": "f8eda22cbe1e7fe4883680257ec32a04",
     "url": "/taxi/index.html"
   }
 ];
