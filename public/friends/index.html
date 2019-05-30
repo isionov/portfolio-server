@@ -1,59 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-  <script src="http://vk.com/js/api/openapi.js"></script>
-  <link rel="stylesheet" href="./style.css">
-<link href="/friends/style.css" rel="stylesheet"></head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script src="http://vk.com/js/api/openapi.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link href="/friends/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
     <div class="friends-container">
-        <img src="./img/title.png" alt="image">
+      <img src="./img/title.png" alt="image" />
 
-        <div class="wrapper-content">
-            <header class="header">
-                <div class="header-title"><p>Выберите друзей</p></div>
-                <div class="close">
-                    <svg width="30" height="30">
-                        <use xlink:href="img/sprite.svg#close"></use>
-                    </svg>
-                </div>
-            </header>
+      <div class="wrapper-content">
+        <header class="header">
+          <div class="header-title"><p>Выберите друзей</p></div>
+          <div class="close">
+            <svg width="30" height="30">
+              <use xlink:href="/friends/img/sprite.svg#close"></use>
+            </svg>
+          </div>
+        </header>
 
-            <div class="maincontent">
-            <div class="drag">
-                <div class="friend-input">
-                    <div class="input-wrap">
-                        <svg width="15" height="15">
-                            <use xlink:href="img/sprite.svg#loupe"></use>
-                        </svg>
-                        <input id="filter-input-first" type="text" placeholder="Начните вводить имя друга">
-                    </div>
-                </div>
-                <p class="content-title">Ваши друзья</p>
-                <div id="left-list-wrap" class="template-wrapper">
-                </div>
+        <div class="maincontent">
+          <div class="drag">
+            <div class="friend-input">
+              <div class="input-wrap">
+                <svg width="15" height="15">
+                  <use xlink:href="/friends/img/sprite.svg#loupe"></use>
+                </svg>
+                <input
+                  id="filter-input-first"
+                  type="text"
+                  placeholder="Начните вводить имя друга"
+                />
+              </div>
+            </div>
+            <p class="content-title">Ваши друзья</p>
+            <div id="left-list-wrap" class="template-wrapper"></div>
+          </div>
+
+          <div class="drop">
+            <div class="friend-input">
+              <div class="input-wrap">
+                <input
+                  id="filter-input-second"
+                  class="input-field--margin"
+                  type="text"
+                  placeholder="Начните вводить имя друга"
+                />
+              </div>
             </div>
 
-            <div class="drop">
-                <div class="friend-input">
-                    <div class="input-wrap">
-                        <input  id="filter-input-second" class="input-field--margin" type="text" placeholder="Начните вводить имя друга">
-                    </div>
-                </div>
-
-                <p class="content-title">Друзья в списке</p>
-                <div id="right-list-wrap" class="template-wrapper">
-                </div>
-            </div>
-            </div>
-
-            <footer class="footer">
-                <button class="save">Сохранить</button>
-            </footer>
+            <p class="content-title">Друзья в списке</p>
+            <div id="right-list-wrap" class="template-wrapper"></div>
+          </div>
         </div>
+
+        <footer class="footer">
+          <button class="save">Сохранить</button>
+        </footer>
+      </div>
     </div>
 
     <script src="./friendsFilter.js"></script>
-<script type="text/javascript" src="/friends/friendsFilter.js"></script></body>
+    <script type="text/javascript" src="/friends/friendsFilter.js"></script>
+  </body>
 </html>
