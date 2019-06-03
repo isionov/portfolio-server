@@ -1,14 +1,14 @@
 {
-  "main.js": "/taxi/static/js/main.77d26bb1.chunk.js",
-  "main.js.map": "/taxi/static/js/main.77d26bb1.chunk.js.map",
+  "main.js": "/taxi/static/js/main.2af6ae44.chunk.js",
+  "main.js.map": "/taxi/static/js/main.2af6ae44.chunk.js.map",
   "static/css/1.2d9d1e4a.chunk.css": "/taxi/static/css/1.2d9d1e4a.chunk.css",
-  "static/js/1.33d8d967.chunk.js": "/taxi/static/js/1.33d8d967.chunk.js",
-  "static/js/1.33d8d967.chunk.js.map": "/taxi/static/js/1.33d8d967.chunk.js.map",
+  "static/js/1.5c1a243e.chunk.js": "/taxi/static/js/1.5c1a243e.chunk.js",
+  "static/js/1.5c1a243e.chunk.js.map": "/taxi/static/js/1.5c1a243e.chunk.js.map",
   "runtime~main.js": "/taxi/static/js/runtime~main.2f943f0d.js",
   "runtime~main.js.map": "/taxi/static/js/runtime~main.2f943f0d.js.map",
   "static/media/index.css": "/taxi/static/media/roboto-latin-900italic.bc833e72.woff",
   "static/css/1.2d9d1e4a.chunk.css.map": "/taxi/static/css/1.2d9d1e4a.chunk.css.map",
   "index.html": "/taxi/index.html",
-  "precache-manifest.e4cb96acdd41300def90a4b0b48d0fe7.js": "/taxi/precache-manifest.e4cb96acdd41300def90a4b0b48d0fe7.js",
+  "precache-manifest.7e5b1f9c7259cfc7a38e20e60af05a56.js": "/taxi/precache-manifest.7e5b1f9c7259cfc7a38e20e60af05a56.js",
   "service-worker.js": "/taxi/service-worker.js"
 }
