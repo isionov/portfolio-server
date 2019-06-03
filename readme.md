@@ -26,7 +26,7 @@
 
 ```sh
 $ git clone https://github.com/isionov/portfolio-server.git
-$ cd ls-advanced-portfolio
+$ cd portfolio-server
 $ yarn || npm i
 $ yarn start || npn start
 ```
