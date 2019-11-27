@@ -54,14 +54,29 @@ module.exports.createWork = (req, res) => {
 };
 
 module.exports.changeWork = (req, res) => {
+  console.dir("Hello word");
+  console.dir(path.join(process.cwd(), upload));
+
   const Works = mongoose.model("Works");
   const form = new formidable.IncomingForm();
   const id = req.params.id;
+  console.dir("Hello word 2");
 
   form.uploadDir = path.join(process.cwd(), upload);
+  console.dir("Hello word 3");
+
   form.hash = "md5";
+  console.dir("Hello word 4");
+
   form.parse(req, function(err, fields, file) {
+    console.dir("Hello word 5");
+
     const { title, techs, link, description, photo } = fields;
+    console.dir("Hello word 5");
+
+    console.dir(file);
+    console.dir(file.photo);
+    console.dir(file.photo.path);
 
     if (err) {
       return res
@@ -82,9 +97,12 @@ module.exports.changeWork = (req, res) => {
           let publicPathPhoto;
 
           if (file.photo) {
+            console.dir(file);
             let imageFile = fs.readFileSync(file.photo.path);
+            console.dir("imageFile");
 
             publicPathPhoto = Buffer.from(imageFile).toString("base64");
+            console.dir("publicPathPhoto", publicPathPhoto);
           }
 
           item.title = title;

@@ -37,10 +37,10 @@ node_modules/
 jspm_packages/
 
 # Config
-/config/*
+/config/config.json
 
 # Uploads
-public/upload/
+
 
 # Typescript v1 declaration files
 typings/
