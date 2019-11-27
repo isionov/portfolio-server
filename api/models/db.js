@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
-const config = require("../../config/config");
 
 mongoose.Promise = global.Promise;
 
 mongoose
   .connect(
-    `mongodb+srv://${config.db.user}:${encodeURIComponent(
-      config.db.password
+    `mongodb+srv://${process.env.user}:${encodeURIComponent(
+      process.env.password
     )}@portfolioapi-y6oom.mongodb.net/test?retryWrites=true`,
     {
       useNewUrlParser: true
@@ -16,15 +15,6 @@ mongoose
     console.error(e);
     throw e;
   });
-
-// mongoose
-//   .connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`, {
-//     useNewUrlParser: true
-//   })
-//   .catch((e) => {
-//     console.error(e);
-//     throw e;
-//   });
 
 mongoose.connection.on("connected", function() {
   console.log(`Mongoose default connection oppen on MLAB`);

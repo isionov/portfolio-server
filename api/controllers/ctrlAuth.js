@@ -1,6 +1,6 @@
 const jwt = require("jwt-simple");
 const passport = require("passport");
-const secret = require("../../config/config.json").secret;
+const secret = process.env.secret;
 const fs = require("fs");
 const path = require("path");
 

@@ -33,21 +33,15 @@ module.exports.createWork = (req, res) => {
       description,
       user_id: req.user.id
     });
-    const fileName = path.join(upload, `/${item.id}${file.photo.hash}.png`);
-    const publicPathPhoto =
-      "upload/img/works" + `/${item.id}${file.photo.hash}.png`;
+
+    const imageFile = fs.readFileSync(file.photo.path);
+    const publicPathPhoto = Buffer.from(imageFile).toString("base64");
 
     item.set("photo", publicPathPhoto);
     item
       .save()
       .then(item => {
-        fs.rename(file.photo.path, fileName, function(err) {
-          if (err) {
-            console.log(err);
-            fs.unlink(fileName);
-            fs.rename(file.photo.path, fileName);
-          }
-        });
+        fs.unlink(file.photo.path);
 
         return res.status(201).json({ message: "Запись успешно добавлена" });
       })
@@ -63,7 +57,6 @@ module.exports.changeWork = (req, res) => {
   const Works = mongoose.model("Works");
   const form = new formidable.IncomingForm();
   const id = req.params.id;
-  let publicPathPhoto;
 
   form.uploadDir = path.join(process.cwd(), upload);
   form.hash = "md5";
@@ -86,21 +79,12 @@ module.exports.changeWork = (req, res) => {
     Works.findById(id)
       .then(item => {
         if (!!item) {
-          if (file.photo) {
-            const fileName = path.join(
-              upload,
-              `/${item.id}${file.photo.hash}.png`
-            );
-            publicPathPhoto =
-              "upload/img/works" + `/${item.id}${file.photo.hash}.png`;
+          let publicPathPhoto;
 
-            fs.rename(file.photo.path, fileName, function(err) {
-              if (err) {
-                console.log(err);
-                fs.unlink(fileName);
-                fs.rename(file.photo.path, fileName);
-              }
-            });
+          if (file.photo) {
+            let imageFile = fs.readFileSync(file.photo.path);
+
+            publicPathPhoto = Buffer.from(imageFile).toString("base64");
           }
 
           item.title = title;
@@ -108,10 +92,8 @@ module.exports.changeWork = (req, res) => {
           item.link = link;
           item.description = description;
 
-          if (file.photo) {
-            const oldFileName = path.join("public/", item.photo);
-
-            fs.unlink(oldFileName, e => {
+          if (publicPathPhoto) {
+            fs.unlink(file.photo.path, e => {
               console.log(e);
             });
 
@@ -124,6 +106,7 @@ module.exports.changeWork = (req, res) => {
               res.status(200).json({ message: "Запись успешно изменена" });
             })
             .catch(err => {
+              console.log(item);
               res.status(400).json({
                 message: `При изменении произошла ошибка: ${err.message}`
               });
@@ -147,17 +130,7 @@ module.exports.deleteWork = (req, res) => {
   Work.findByIdAndRemove(id)
     .then(item => {
       if (!!item) {
-        const fileName = path.join("public/", item.photo);
-
-        fs.unlink(fileName, function(err) {
-          if (!err) {
-            res.status(200).json({ message: "Запись успешно удалена" });
-          } else {
-            res.status(400).json({
-              message: `При удалении произошла ошибка: ${err.message}`
-            });
-          }
-        });
+        res.status(200).json({ message: "Запись удалена" });
       } else {
         res.status(404).json({ message: "Запись не найдена" });
       }
