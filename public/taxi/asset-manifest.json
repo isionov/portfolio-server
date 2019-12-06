@@ -1,14 +1,14 @@
 {
-  "main.js": "/taxi/static/js/main.2af6ae44.chunk.js",
-  "main.js.map": "/taxi/static/js/main.2af6ae44.chunk.js.map",
-  "static/css/1.2d9d1e4a.chunk.css": "/taxi/static/css/1.2d9d1e4a.chunk.css",
-  "static/js/1.5c1a243e.chunk.js": "/taxi/static/js/1.5c1a243e.chunk.js",
-  "static/js/1.5c1a243e.chunk.js.map": "/taxi/static/js/1.5c1a243e.chunk.js.map",
+  "main.js": "/taxi/static/js/main.51dc8423.chunk.js",
+  "main.js.map": "/taxi/static/js/main.51dc8423.chunk.js.map",
+  "static/css/1.be969114.chunk.css": "/taxi/static/css/1.be969114.chunk.css",
+  "static/js/1.0736806f.chunk.js": "/taxi/static/js/1.0736806f.chunk.js",
+  "static/js/1.0736806f.chunk.js.map": "/taxi/static/js/1.0736806f.chunk.js.map",
   "runtime~main.js": "/taxi/static/js/runtime~main.2f943f0d.js",
   "runtime~main.js.map": "/taxi/static/js/runtime~main.2f943f0d.js.map",
-  "static/media/index.css": "/taxi/static/media/roboto-latin-900italic.bc833e72.woff",
-  "static/css/1.2d9d1e4a.chunk.css.map": "/taxi/static/css/1.2d9d1e4a.chunk.css.map",
+  "static/media/index.css": "/taxi/static/media/roboto-latin-900italic.7b770d6c.woff2",
+  "static/css/1.be969114.chunk.css.map": "/taxi/static/css/1.be969114.chunk.css.map",
   "index.html": "/taxi/index.html",
-  "precache-manifest.7e5b1f9c7259cfc7a38e20e60af05a56.js": "/taxi/precache-manifest.7e5b1f9c7259cfc7a38e20e60af05a56.js",
+  "precache-manifest.093f9ed76e032fcbc0899e6f68d5daf6.js": "/taxi/precache-manifest.093f9ed76e032fcbc0899e6f68d5daf6.js",
   "service-worker.js": "/taxi/service-worker.js"
 }
